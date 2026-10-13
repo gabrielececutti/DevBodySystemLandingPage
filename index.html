@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Developer Training System | DevBodySystem</title>
+  <meta name="description" content="A practical 3-day gym plan for software developers: 3 full-body workouts, 1 progression rule, and a backup plan for crunch weeks.">
+  <meta property="og:title" content="The Developer Training System">
+  <meta property="og:description" content="3 workouts. 1 progression rule. A backup plan for crunch weeks.">
+  <meta property="og:type" content="product">
+  <meta name="theme-color" content="#111111">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #8C52FF;
+      --accent-hover: #9D6BFF;
+      --accent-soft: rgba(140, 82, 255, 0.14);
+      --accent-line: rgba(140, 82, 255, 0.38);
+      --bg: #111111;
+      --surface: #1C1C1C;
+      --surface-2: #232323;
+      --line: #2C2C2C;
+      --text: #F5F5F5;
+      --muted: #B5B5B5;
+      --faint: #8A8A8A;
+      --radius: 14px;
+      --max: 1120px;
+      --head: "Manrope", system-ui, sans-serif;
+      --body: "Inter", system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 400 17px/1.65 var(--body);
+      -webkit-font-smoothing: antialiased;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; }
+    h1, h2, h3 { font-family: var(--head); line-height: 1.12; margin: 0; letter-spacing: -0.02em; }
+    h1 { font-size: clamp(2.3rem, 6vw, 4rem); font-weight: 800; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; }
+    h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; }
+    p { margin: 0; }
+    .accent { color: var(--accent); }
+    .muted { color: var(--muted); }
+
+    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+    section { padding: 96px 0; }
+    section + section { border-top: 1px solid var(--line); }
+    .eyebrow {
+      display: inline-block;
+      font: 700 0.78rem/1 var(--head);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .section-head { max-width: 720px; margin-bottom: 48px; }
+    .section-head p { margin-top: 16px; color: var(--muted); font-size: 1.08rem; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 16px 28px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #fff;
+      font: 700 1rem/1 var(--head);
+      text-decoration: none;
+      transition: background .15s ease, transform .15s ease;
+    }
+    .btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn:focus-visible, .link:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+    .btn svg { width: 18px; height: 18px; }
+    .btn-sm { padding: 11px 18px; font-size: 0.92rem; }
+    .link { color: var(--muted); text-decoration: none; font-weight: 500; }
+    .link:hover { color: var(--text); }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(17, 17, 17, 0.86);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 800 1.05rem/1 var(--head); letter-spacing: -0.01em; }
+    .brand svg { width: 30px; height: 30px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links .link { font-size: 0.95rem; }
+
+    /* Hero */
+    .hero { padding: 80px 0 96px; }
+    .hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+    .hero h1 { margin-bottom: 22px; }
+    .hero .lede { font-size: 1.2rem; color: var(--muted); max-width: 34ch; margin-bottom: 32px; }
+    .hero .lede strong { color: var(--text); font-weight: 600; }
+    .hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
+    .facts { display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 36px; padding: 0; list-style: none; color: var(--muted); font-size: 0.95rem; }
+    .facts li { display: flex; align-items: center; gap: 8px; }
+    .facts svg { width: 18px; height: 18px; color: var(--accent); flex: none; }
+
+    /* Code card */
+    .code-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 30px 80px -30px rgba(140, 82, 255, 0.35);
+    }
+    .code-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--surface-2); }
+    .code-bar i { width: 10px; height: 10px; border-radius: 50%; background: #3A3A3A; }
+    .code-bar span { margin-left: 8px; font: 500 0.8rem/1 var(--mono); color: var(--faint); }
+    pre {
+      margin: 0; padding: 22px 22px 24px;
+      font: 400 0.88rem/1.75 var(--mono);
+      color: var(--text);
+      overflow-x: auto;
+      white-space: pre;
+    }
+    pre .c { color: var(--faint); }
+    pre .k { color: var(--accent); font-weight: 500; }
+    pre .f { color: #D6C2FF; }
+
+    /* Problem */
+    .pain { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; padding: 0; margin: 0; list-style: none; }
+    .pain li {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 20px 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    }
+    .pain svg { width: 20px; height: 20px; flex: none; margin-top: 4px; color: var(--faint); }
+    .pivot { margin-top: 40px; font: 700 clamp(1.25rem, 2.6vw, 1.6rem)/1.35 var(--head); max-width: 760px; }
+
+    /* Rules grid */
+    .rules { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; counter-reset: rule; }
+    .rule { padding: 24px 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+    .rule .num { font: 500 0.8rem/1 var(--mono); color: var(--accent); margin-bottom: 14px; display: block; }
+    .rule h3 { margin-bottom: 8px; }
+    .rule p { color: var(--muted); font-size: 0.95rem; line-height: 1.55; }
+
+    /* Inside / chapters */
+    .inside { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .chapters { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+    .chapters li { display: grid; grid-template-columns: 52px 1fr; gap: 8px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .chapters .idx { font: 500 0.9rem/1.6 var(--mono); color: var(--accent); }
+    .chapters h3 { margin-bottom: 4px; }
+    .chapters p { color: var(--muted); font-size: 0.95rem; }
+
+    .sessions { display: grid; gap: 14px; }
+    .session { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+    .session-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
+    .session-head h3 { font-size: 1.05rem; }
+    .session-head span { font: 500 0.78rem/1 var(--mono); color: var(--faint); }
+    .session ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+    .session li { display: flex; justify-content: space-between; gap: 16px; font-size: 0.95rem; color: var(--muted); }
+    .session li b { font-weight: 500; color: var(--text); }
+    .session li span { font-family: var(--mono); font-size: 0.85rem; white-space: nowrap; }
+    .session.locked li:nth-child(n+3) { filter: blur(4px); user-select: none; }
+    .note { margin-top: 14px; font-size: 0.88rem; color: var(--faint); }
+
+    /* Tables */
+    .table-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .table-scroll { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { font: 700 0.75rem/1.2 var(--head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); background: var(--surface-2); }
+    td { color: var(--muted); }
+    td.mono { font-family: var(--mono); font-size: 0.88rem; color: var(--text); white-space: nowrap; }
+    tr:last-child td { border-bottom: 0; }
+    tr.hit td { background: var(--accent-soft); }
+    tr.hit td:last-child { color: var(--text); font-weight: 600; }
+    .table-caption { padding: 16px 18px; font-size: 0.9rem; color: var(--faint); border-top: 1px solid var(--line); }
+
+    .split { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: center; }
+    .split .copy p + p { margin-top: 16px; }
+    .split .copy p { color: var(--muted); }
+    .split .copy h2 { margin-bottom: 20px; }
+
+    .never { margin-top: 28px; padding: 22px; border: 1px solid var(--accent-line); border-radius: var(--radius); background: var(--accent-soft); }
+    .never h3 { font-size: 1rem; margin-bottom: 10px; }
+    .never ul { margin: 0; padding-left: 20px; color: var(--text); }
+    .never li + li { margin-top: 4px; }
+
+    /* Fit */
+    .fit { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .fit-card { padding: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+    .fit-card h3 { margin-bottom: 18px; }
+    .fit-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+    .fit-card li { display: flex; gap: 12px; color: var(--muted); }
+    .fit-card svg { width: 20px; height: 20px; flex: none; margin-top: 3px; }
+    .fit-card.yes { border-color: var(--accent-line); }
+    .fit-card.yes svg { color: var(--accent); }
+    .fit-card.no svg { color: var(--faint); }
+
+    /* About */
+    .about { display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: center; }
+    .portrait {
+      aspect-ratio: 4 / 5; border-radius: var(--radius); overflow: hidden;
+      background: linear-gradient(160deg, #262035, var(--surface));
+      border: 1px solid var(--line);
+      display: grid; place-items: center;
+    }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; }
+    .portrait .initials { font: 800 4rem/1 var(--head); color: var(--accent); opacity: .6; }
+    .about h2 { margin-bottom: 20px; }
+    .about p { color: var(--muted); }
+    .about p + p { margin-top: 16px; }
+    .about blockquote { margin: 28px 0 0; padding-left: 18px; border-left: 3px solid var(--accent); font: 700 1.2rem/1.45 var(--head); color: var(--text); }
+
+    /* FAQ */
+    .faq { max-width: 820px; }
+    details { border-bottom: 1px solid var(--line); }
+    details:first-of-type { border-top: 1px solid var(--line); }
+    summary {
+      list-style: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 20px;
+      padding: 22px 0; font: 700 1.08rem/1.4 var(--head);
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font: 400 1.6rem/1 var(--body); color: var(--accent); transition: transform .2s ease; }
+    details[open] summary::after { transform: rotate(45deg); }
+    summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+    details p { padding: 0 0 24px; color: var(--muted); max-width: 70ch; }
+
+    /* Final CTA */
+    .final { text-align: center; }
+    .final-card {
+      max-width: 820px; margin: 0 auto; padding: 64px 32px;
+      border-radius: 20px; border: 1px solid var(--accent-line);
+      background: radial-gradient(120% 140% at 50% 0%, rgba(140, 82, 255, 0.22), var(--surface) 60%);
+    }
+    .final h2 { margin-bottom: 16px; }
+    .final p { color: var(--muted); max-width: 52ch; margin: 0 auto 32px; font-size: 1.08rem; }
+    .final .small { margin: 18px auto 0; font-size: 0.88rem; color: var(--faint); }
+
+    footer { padding: 48px 0 64px; border-top: 1px solid var(--line); color: var(--faint); font-size: 0.88rem; }
+    footer .wrap { display: grid; gap: 18px; }
+    footer .row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: center; }
+    footer p { max-width: 80ch; }
+
+    /* Mobile sticky buy bar */
+    .mobile-bar { display: none; }
+
+    @media (max-width: 960px) {
+      .rules { grid-template-columns: repeat(2, 1fr); }
+      .hero .wrap, .inside, .split, .about { grid-template-columns: 1fr; gap: 40px; }
+      .about .portrait { max-width: 260px; }
+    }
+    @media (max-width: 720px) {
+      body { font-size: 16px; }
+      section { padding: 72px 0; }
+      .wrap { padding: 0 16px; }
+      .nav-links .link { display: none; }
+      .hero { padding: 56px 0 72px; }
+      .pain, .fit, .rules { grid-template-columns: 1fr; }
+      .btn { width: 100%; }
+      .hero-cta .link { width: 100%; text-align: center; }
+      .nav .btn { width: auto; }
+      th, td { padding: 12px 14px; }
+      pre { font-size: 0.8rem; padding: 18px 16px; }
+      .final-card { padding: 48px 20px; }
+      .mobile-bar {
+        display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+        padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+        background: rgba(17, 17, 17, 0.94); border-top: 1px solid var(--line);
+        transform: translateY(110%); transition: transform .25s ease;
+      }
+      .mobile-bar.show { transform: none; }
+      footer { padding-bottom: 110px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SVG icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-dot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-gym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/></symbol>
+  </svg>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="DevBodySystem home">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <rect width="32" height="32" rx="8" fill="#1C1C1C"/>
+          <path d="M10 10 5 16l5 6M22 10l5 6-5 6" fill="none" stroke="#8C52FF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 16h8M13 12.5v7M19 12.5v7" fill="none" stroke="#F5F5F5" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        DevBodySystem
+      </a>
+      <nav class="nav-links" aria-label="Main">
+        <a class="link" href="#system">The system</a>
+        <a class="link" href="#inside">Inside</a>
+        <a class="link" href="#faq">FAQ</a>
+        <a class="btn btn-sm buy" href="#">Get the plan</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow">The Developer Training System</span>
+          <h1>A training plan that <span class="accent">survives your workweek.</span></h1>
+          <p class="lede"><strong>3 workouts. 1 progression rule. A backup plan for crunch weeks.</strong> A practical gym plan for developers who are done improvising.</p>
+          <div class="hero-cta">
+            <a class="btn buy" href="#">Get the ebook on Payhip <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="link" href="#system">See the whole system first ↓</a>
+          </div>
+          <ul class="facts">
+            <li><svg aria-hidden="true"><use href="#i-cal"/></svg>3 gym visits a week</li>
+            <li><svg aria-hidden="true"><use href="#i-clock"/></svg>About 50–70 min per visit</li>
+            <li><svg aria-hidden="true"><use href="#i-gym"/></svg>Full-body, machine-friendly</li>
+          </ul>
+        </div>
+
+        <div class="code-card" role="img" aria-label="The progression rule written as pseudo-code: if every set hit the top of the range with clean form, add the smallest weight increment; if reps fell below the range, use a smaller jump or the previous weight; otherwise keep the weight and beat last time's total by one rep.">
+          <div class="code-bar"><i></i><i></i><i></i><span>progression.py</span></div>
+<pre aria-hidden="true"><span class="c"># Run before each exercise,</span>
+<span class="c"># using your last log entry</span>
+
+<span class="k">if</span> every_set >= top_of_range <span class="k">and</span> form_was_clean:
+    weight += smallest_increment
+
+<span class="k">elif</span> reps_fell_below_range:
+    <span class="f">use_smaller_jump_or_previous_weight</span>()
+
+<span class="k">else</span>:
+    <span class="f">keep_weight</span>()
+    <span class="f">beat_last_total_by</span>(<span class="k">1</span>)  <span class="c"># one more rep</span></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Sound familiar?</span>
+          <h2>You don't need more fitness content. You need a plan you'll actually run.</h2>
+        </div>
+        <ul class="pain">
+          <li><svg aria-hidden="true"><use href="#i-dot"/></svg><span>You go to the gym, but every session is improvised and you can't say if you're progressing.</span></li>
+          <li><svg aria-hidden="true"><use href="#i-dot"/></svg><span>"I'll go after work" turns into a late meeting, then a tired evening on the couch.</span></li>
+          <li><svg aria-hidden="true"><use href="#i-dot"/></svg><span>One release week and the whole routine falls apart. Restarting feels like starting over.</span></li>
+          <li><svg aria-hidden="true"><use href="#i-dot"/></svg><span>You've saved dozens of workouts and videos, but none of it turns into a consistent week.</span></li>
+        </ul>
+        <p class="pivot">You already build reliable systems at work. <span class="accent">Your health needs a system too.</span></p>
+      </div>
+    </section>
+
+    <!-- SYSTEM ON ONE PAGE -->
+    <section id="system">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">The whole system on one page</span>
+          <h2>Eight rules. No guesswork between sessions.</h2>
+          <p>This is the actual summary page from the book. The chapters explain each rule, show the workouts, and cover the edge cases.</p>
+        </div>
+        <div class="rules">
+          <article class="rule"><span class="num">01</span><h3>Train 3× a week</h3><p>Non-consecutive days. Rotate sessions A → B → C → A.</p></article>
+          <article class="rule"><span class="num">02</span><h3>Don't reset</h3><p>The rotation carries across weeks. Missed C on Friday? Next session is C.</p></article>
+          <article class="rule"><span class="num">03</span><h3>Leave 2 reps in the tank</h3><p>End each set when you could still do about 2 more clean reps.</p></article>
+          <article class="rule"><span class="num">04</span><h3>Log every working set</h3><p>Weight and reps. Warm-ups don't count.</p></article>
+          <article class="rule"><span class="num">05</span><h3>Earn the weight increase</h3><p>Hit the top of the range → add the smallest increment. Otherwise, one more rep.</p></article>
+          <article class="rule"><span class="num">06</span><h3>Short on time?</h3><p>Do the first 4 exercises × 2 sets. Skip exercises 5 and 6.</p></article>
+          <article class="rule"><span class="num">07</span><h3>Only 2 visits?</h3><p>Just follow the rotation. Last time was B? This week is C and A.</p></article>
+          <article class="rule"><span class="num">08</span><h3>Never pay back</h3><p>Missed workouts are gone. Don't double up. Just continue.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRESSION -->
+    <section>
+      <div class="wrap split">
+        <div class="copy">
+          <span class="eyebrow">The progression rule</span>
+          <h2>Know exactly what to do next time.</h2>
+          <p>The book uses double progression: add reps until you reach the top of the range, then add weight and build the reps back up.</p>
+          <p>Before you leave the gym, you write one line per exercise. Next session, you just read it and lift. No working it out again.</p>
+        </div>
+        <div class="table-card">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Visit</th><th>Weight</th><th>Reps</th><th>Next time</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="mono">1</td><td class="mono">40 kg</td><td class="mono">10/9/8</td><td>Same weight, +1 rep</td></tr>
+                <tr><td class="mono">2</td><td class="mono">40 kg</td><td class="mono">10/9/9</td><td>Same weight</td></tr>
+                <tr><td class="mono">4</td><td class="mono">40 kg</td><td class="mono">11/10/9</td><td>Same weight</td></tr>
+                <tr class="hit"><td class="mono">5</td><td class="mono">40 kg</td><td class="mono">12/11/10</td><td>Go up next session</td></tr>
+                <tr><td class="mono">6</td><td class="mono">42.5 kg</td><td class="mono">9/8/8</td><td>Build reps again</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-caption">Example from the book: machine chest press, 3 × 8–12. The rep drop at visit 6 is expected. The weight went up.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CRUNCH WEEKS -->
+    <section>
+      <div class="wrap split">
+        <div class="copy">
+          <span class="eyebrow">Crunch weeks</span>
+          <h2>Releases happen. The plan already knows what to do.</h2>
+          <p>Most plans assume a perfect week. This one has a decision table for the weeks that aren't, plus two Fallback sessions built for 2-visit weeks.</p>
+          <div class="never">
+            <h3>Three things never to do</h3>
+            <ul>
+              <li>Cram two workouts into one visit.</li>
+              <li>Rush a full workout by skipping warm-ups or rest.</li>
+              <li>Add missed sessions on top of next week.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="table-card">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Your week</th><th>Do this</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>3 visits, enough time</td><td>Normal A / B / C</td></tr>
+                <tr><td>One visit is short on time</td><td>Short session: first 4 exercises × 2 sets</td></tr>
+                <tr><td>Only 2 visits</td><td>Fallback 1, then Fallback 2</td></tr>
+                <tr><td>Only 1 visit</td><td>One session, picked from a table in the book</td></tr>
+                <tr><td>Zero visits</td><td>Log the gap. Book next week. Move on.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-caption">The book also covers weeks that change halfway through.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSIDE -->
+    <section id="inside">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">What's inside</span>
+          <h2>Short enough to read tonight. Clear enough to use tomorrow.</h2>
+          <p>A practical ebook, not a textbook. Every chapter ends in something you do.</p>
+        </div>
+        <div class="inside">
+          <ol class="chapters">
+            <li><span class="idx">00</span><div><h3>The whole system on one page</h3><p>The eight rules and a 5-step checklist for your first session.</p></div></li>
+            <li><span class="idx">01</span><div><h3>Put it in your calendar</h3><p>How to book the full visit, pick slots that fit how you work, and the "commit and leave" reminder.</p></div></li>
+            <li><span class="idx">02</span><div><h3>The workouts</h3><p>Sessions A, B and C, warm-ups, finding your starting weight, a technique checklist and machine swaps.</p></div></li>
+            <li><span class="idx">03</span><div><h3>The progression rule</h3><p>When to add weight, when to add reps, and how to write the next target before you leave.</p></div></li>
+            <li><span class="idx">04</span><div><h3>Crunch weeks</h3><p>Short sessions, two Fallback workouts, and how to keep your place in the A/B/C rotation.</p></div></li>
+            <li><span class="idx">05</span><div><h3>Debugging your training</h3><p>A symptom → fix table for missed sessions, stuck lifts and falling reps. Change one thing at a time.</p></div></li>
+            <li><span class="idx">+</span><div><h3>Your first 4 weeks, weekly review & training log</h3><p>A week-by-week start plan, a 5-minute review, and a printable log.</p></div></li>
+          </ol>
+
+          <div class="sessions">
+            <div class="session">
+              <div class="session-head"><h3>Session A</h3><span>15 working sets</span></div>
+              <ol>
+                <li><b>Leg press</b><span>3 × 8–12</span></li>
+                <li><b>Machine chest press</b><span>3 × 8–12</span></li>
+                <li><b>Pull-ups (assisted as needed)</b><span>3 × 6–10</span></li>
+                <li><b>Seated or lying leg curl</b><span>2 × 10–15</span></li>
+                <li><b>Lateral raise</b><span>2 × 12–20</span></li>
+                <li><b>Biceps curl</b><span>2 × 10–15</span></li>
+              </ol>
+            </div>
+            <div class="session locked" aria-label="Session B preview, full details in the book">
+              <div class="session-head"><h3>Session B</h3><span>14 working sets</span></div>
+              <ol>
+                <li><b>Barbell Romanian deadlift</b><span>3 × 8–10</span></li>
+                <li><b>Shoulder press</b><span>2 × 8–12</span></li>
+                <li aria-hidden="true"><b>Chest-supported row</b><span>3 × 8–12</span></li>
+                <li aria-hidden="true"><b>Pec fly</b><span>2 × 10–15</span></li>
+                <li aria-hidden="true"><b>Calf raise</b><span>2 × 10–15</span></li>
+                <li aria-hidden="true"><b>Triceps pushdown</b><span>2 × 10–15</span></li>
+              </ol>
+            </div>
+            <p class="note">Session C, both Fallback sessions, rest times and exercise swaps are in the book.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FIT -->
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Is it for you?</span>
+          <h2>Built for a specific person. Be honest with yourself.</h2>
+        </div>
+        <div class="fit">
+          <div class="fit-card yes">
+            <h3>A good fit if you…</h3>
+            <ul>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Work a full-time desk job, often in tech</span></li>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Have a gym membership and basic exercise experience</span></li>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Keep improvising your workouts and want a clear progression</span></li>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Can give it 2–3 visits a week of about an hour</span></li>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Want a plan that bends during busy weeks instead of breaking</span></li>
+            </ul>
+          </div>
+          <div class="fit-card no">
+            <h3>Not the right book if you…</h3>
+            <ul>
+              <li><svg aria-hidden="true"><use href="#i-x"/></svg><span>Want a home or bodyweight-only program</span></li>
+              <li><svg aria-hidden="true"><use href="#i-x"/></svg><span>Are looking for a nutrition plan or meal guide</span></li>
+              <li><svg aria-hidden="true"><use href="#i-x"/></svg><span>Are an advanced lifter already running a structured program</span></li>
+              <li><svg aria-hidden="true"><use href="#i-x"/></svg><span>Want a 30-day transformation promise. There isn't one here.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section>
+      <div class="wrap about">
+        <div class="portrait">
+          <!-- Replace with a real photo: <img src="assets/gabriele.jpg" alt="Gabriele, founder of DevBodySystem"> -->
+          <span class="initials" aria-hidden="true">G</span>
+        </div>
+        <div>
+          <span class="eyebrow">Who wrote this</span>
+          <h2>Written by a developer who trains around a full-time job.</h2>
+          <p>I'm Gabriele, a full-time software engineer based in Italy. I've been training and practicing nutrition for more than eight years, alongside long days at a computer.</p>
+          <p>I know the mental fatigue after work and how fast a routine falls apart during a demanding sprint. This book is the system I use to keep training consistent anyway. Simple rules, decided in advance, so there's nothing left to negotiate at 18:00.</p>
+          <p>I'm not a doctor or a dietitian. This is practical experience, organized into a plan you can run.</p>
+          <blockquote>Build great software. Build yourself too.</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>Questions before you buy</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>How much time does it take?</summary>
+            <p>Three gym visits a week of about 50–70 minutes each. If a visit is short, there's a Short session (8 sets). If you only have two slots, there are two Fallback sessions designed for that.</p>
+          </details>
+          <details>
+            <summary>Do I need gym experience?</summary>
+            <p>Basic experience, yes. The plan is built for people with a gym membership who already know their way around the machines. If you haven't learned the Romanian deadlift, the book recommends getting coached first or using the dumbbell version.</p>
+          </details>
+          <details>
+            <summary>What equipment do I need?</summary>
+            <p>A regular commercial gym: leg press, chest press, lat pulldown or pull-up station, cables, dumbbells and a barbell. If a machine is taken, there's a swap table with alternatives.</p>
+          </details>
+          <details>
+            <summary>Does it cover nutrition or cardio?</summary>
+            <p>No. This book covers strength training only. It includes short notes on sleep, meals around training and general cardio guidelines, but it's not a nutrition plan.</p>
+          </details>
+          <details>
+            <summary>What format is it, and how do I get it?</summary>
+            <p>It's a digital ebook sold through Payhip. After checkout you get a download link straight away. The training log is designed to be printed or copied into your notes app.</p>
+          </details>
+          <details>
+            <summary>Will I get results in four weeks?</summary>
+            <p>The first four weeks are about building the habit: booked slots, real starting numbers and a clear next target for every exercise. Results vary between people, and the book doesn't promise a timeline.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final">
+      <div class="wrap">
+        <div class="final-card">
+          <span class="eyebrow">Stop improvising</span>
+          <h2>Your health needs a system too.</h2>
+          <p>Three workouts, one progression rule, and a plan for the weeks that don't go to plan. Book your first session tonight.</p>
+          <a class="btn buy" href="#">Get The Developer Training System <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <p class="small">Digital ebook · Instant download via Payhip</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="row">
+        <a class="brand" href="#top">DevBodySystem</a>
+        <span>© <span id="year">2026</span> DevBodySystem</span>
+      </div>
+      <p>This ebook is general exercise education, not medical advice. The author is not a doctor or licensed nutritionist. Use weights and exercises you can control, get coaching for movements you don't know, follow any existing medical restrictions, and stop any exercise that causes pain. Results vary between people.</p>
+    </div>
+  </footer>
+
+  <div class="mobile-bar" id="mobileBar">
+    <a class="btn buy" href="#">Get the ebook on Payhip</a>
+  </div>
+
+  <script>
+    // Set your Payhip product link here. Every "buy" button uses it.
+    const PAYHIP_URL = "https://payhip.com/b/YOUR_PRODUCT_ID";
+
+    document.querySelectorAll("a.buy").forEach((a) => {
+      a.href = PAYHIP_URL;
+      a.rel = "noopener";
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Show the sticky mobile buy bar once the hero is out of view
+    const bar = document.getElementById("mobileBar");
+    const hero = document.querySelector(".hero");
+    if ("IntersectionObserver" in window && bar && hero) {
+      new IntersectionObserver(([entry]) => {
+        bar.classList.toggle("show", !entry.isIntersecting);
+      }).observe(hero);
+    }
+  </script>
+</body>
+</html>
