@@ -202,15 +202,15 @@
     .fit-card.no svg { color: var(--faint); }
 
     /* About */
-    .about { display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: center; }
-    .portrait {
-      aspect-ratio: 4 / 5; border-radius: var(--radius); overflow: hidden;
-      background: linear-gradient(160deg, #262035, var(--surface));
+    .about { display: grid; grid-template-columns: 380px 1fr; gap: 56px; align-items: center; }
+    .portrait { margin: 0; }
+    .portrait-frame {
+      border-radius: var(--radius); overflow: hidden;
+      background: radial-gradient(90% 70% at 50% 35%, rgba(140, 82, 255, 0.30), transparent 70%), var(--surface);
       border: 1px solid var(--line);
-      display: grid; place-items: center;
     }
-    .portrait img { width: 100%; height: 100%; object-fit: cover; }
-    .portrait .initials { font: 800 4rem/1 var(--head); color: var(--accent); opacity: .6; }
+    .portrait img { width: 100%; height: auto; display: block; }
+    .portrait figcaption { margin-top: 12px; font-size: 0.88rem; color: var(--faint); }
     .about h2 { margin-bottom: 20px; }
     .about p { color: var(--muted); }
     .about p + p { margin-top: 16px; }
@@ -253,7 +253,7 @@
     @media (max-width: 960px) {
       .rules { grid-template-columns: repeat(2, 1fr); }
       .hero .wrap, .inside, .split, .about { grid-template-columns: 1fr; gap: 40px; }
-      .about .portrait { max-width: 260px; }
+      .about .portrait { max-width: 400px; }
     }
     @media (max-width: 720px) {
       body { font-size: 16px; }
@@ -367,6 +367,27 @@
           <li><svg aria-hidden="true"><use href="#i-dot"/></svg><span>You've saved dozens of workouts and videos, but none of it turns into a consistent week.</span></li>
         </ul>
         <p class="pivot">You already build reliable systems at work. <span class="accent">Your health needs a system too.</span></p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section>
+      <div class="wrap about">
+        <figure class="portrait">
+          <div class="portrait-frame">
+            <img src="assets/gabriele-physique.webp" width="514" height="529" loading="lazy"
+                 alt="Gabriele, founder of DevBodySystem, showing his lean, muscular physique in a mirror selfie">
+          </div>
+          <figcaption>Me, after 8+ years of training alongside a full-time desk job.</figcaption>
+        </figure>
+        <div>
+          <span class="eyebrow">Who wrote this</span>
+          <h2>Written by a developer who trains around a full-time job.</h2>
+          <p>I'm Gabriele, a full-time software engineer based in Italy. I've been training and practicing nutrition for more than eight years, alongside long days at a computer.</p>
+          <p>I know the mental fatigue after work and how fast a routine falls apart during a demanding sprint. This book is the system I use to keep training consistent anyway. Simple rules, decided in advance, so there's nothing left to negotiate at 18:00.</p>
+          <p>I'm not a doctor or a dietitian. This is practical experience, organized into a plan you can run.</p>
+          <blockquote>Build great software. Build yourself too.</blockquote>
+        </div>
       </div>
     </section>
 
@@ -531,24 +552,6 @@
               <li><svg aria-hidden="true"><use href="#i-x"/></svg><span>Want a 30-day transformation promise. There isn't one here.</span></li>
             </ul>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section>
-      <div class="wrap about">
-        <div class="portrait">
-          <!-- Replace with a real photo: <img src="assets/gabriele.jpg" alt="Gabriele, founder of DevBodySystem"> -->
-          <span class="initials" aria-hidden="true">G</span>
-        </div>
-        <div>
-          <span class="eyebrow">Who wrote this</span>
-          <h2>Written by a developer who trains around a full-time job.</h2>
-          <p>I'm Gabriele, a full-time software engineer based in Italy. I've been training and practicing nutrition for more than eight years, alongside long days at a computer.</p>
-          <p>I know the mental fatigue after work and how fast a routine falls apart during a demanding sprint. This book is the system I use to keep training consistent anyway. Simple rules, decided in advance, so there's nothing left to negotiate at 18:00.</p>
-          <p>I'm not a doctor or a dietitian. This is practical experience, organized into a plan you can run.</p>
-          <blockquote>Build great software. Build yourself too.</blockquote>
         </div>
       </div>
     </section>
