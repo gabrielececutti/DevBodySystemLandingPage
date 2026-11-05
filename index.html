@@ -347,12 +347,12 @@
           </ul>
         </div>
 
-        <div class="code-card" role="img" aria-label="The progression rule written as pseudo-code: if every set hit the top of the range with clean form, add the smallest weight increment; if reps fell below the range, use a smaller jump or the previous weight; otherwise keep the weight and beat last time's total by one rep.">
+        <div class="code-card" role="img" aria-label="The progression rule written as pseudo-code: if the first set hit the top of the range with clean form, add the smallest weight increment; if reps fell below the range, use a smaller jump or the previous weight; otherwise keep the weight and beat last time's total by one rep.">
           <div class="code-bar"><i></i><i></i><i></i><span>progression.py</span></div>
 <pre aria-hidden="true"><span class="c"># Run before each exercise,</span>
 <span class="c"># using your last log entry</span>
 
-<span class="k">if</span> every_set >= top_of_range <span class="k">and</span> form_was_clean:
+<span class="k">if</span> first_set >= top_of_range <span class="k">and</span> form_was_clean:
     weight += smallest_increment
 
 <span class="k">elif</span> reps_fell_below_range:
@@ -415,12 +415,12 @@
         </div>
         <div class="rules">
           <article class="rule"><span class="num">01</span><h3>Train 3× a week</h3><p>Non-consecutive days. Rotate sessions A → B → C → A.</p></article>
-          <article class="rule"><span class="num">02</span><h3>Don't reset</h3><p>The rotation carries across weeks. Missed C on Friday? Next session is C.</p></article>
+          <article class="rule"><span class="num">02</span><h3>Don't reset</h3><p>The rotation carries over from week to week. Missed C on Friday? Your next session is C.</p></article>
           <article class="rule"><span class="num">03</span><h3>Leave 2 reps in the tank</h3><p>End each set when you could still do about 2 more clean reps.</p></article>
           <article class="rule"><span class="num">04</span><h3>Log every working set</h3><p>Weight and reps. Warm-ups don't count.</p></article>
-          <article class="rule"><span class="num">05</span><h3>Earn the weight increase</h3><p>Hit the top of the range → add the smallest increment. Otherwise, one more rep.</p></article>
+          <article class="rule"><span class="num">05</span><h3>Earn the weight increase</h3><p>First set hits the top of the range → add the smallest increment. Otherwise, one more rep.</p></article>
           <article class="rule"><span class="num">06</span><h3>Short on time?</h3><p>Do the first 4 exercises × 2 sets. Skip exercises 5 and 6.</p></article>
-          <article class="rule"><span class="num">07</span><h3>Only 2 visits?</h3><p>Just follow the rotation. Last time was B? This week is C and A.</p></article>
+          <article class="rule"><span class="num">07</span><h3>Only 2 visits?</h3><p>Do Fallback 1, then Fallback 2. No guesswork.</p></article>
           <article class="rule"><span class="num">08</span><h3>Never pay back</h3><p>Missed workouts are gone. Don't double up. Just continue.</p></article>
         </div>
       </div>
@@ -432,7 +432,7 @@
         <div class="copy">
           <span class="eyebrow">The progression rule</span>
           <h2>Know exactly what to do next time.</h2>
-          <p>The book uses double progression: add reps until you reach the top of the range, then add weight and build the reps back up.</p>
+          <p>The book uses double progression: add reps until your first set reaches the top of the range, then add weight and build the reps back up.</p>
           <p>Before you leave the gym, you write one line per exercise. Next session, you just read it and lift. No working it out again.</p>
         </div>
         <div class="table-card">
@@ -450,7 +450,7 @@
               </tbody>
             </table>
           </div>
-          <p class="table-caption">Example from the book: machine chest press, 3 × 8–12. The rep drop at visit 6 is expected. The weight went up.</p>
+          <p class="table-caption">Example from the book: machine chest press, 3 × 8–12. The rep drop at visit 6 is expected. The weight went up. Hitting 12 on the first set alone is enough to go up.</p>
         </div>
       </div>
     </section>
@@ -481,7 +481,7 @@
                 <tr><td>3 visits, enough time</td><td>Normal A / B / C</td></tr>
                 <tr><td>One visit is short on time</td><td>Short session: first 4 exercises × 2 sets</td></tr>
                 <tr><td>Only 2 visits</td><td>Fallback 1, then Fallback 2</td></tr>
-                <tr><td>Only 1 visit</td><td>One session, picked from a table in the book</td></tr>
+                <tr><td>Only 1 visit</td><td>Fallback 1</td></tr>
                 <tr><td>Zero visits</td><td>Log the gap. Book next week. Move on.</td></tr>
               </tbody>
             </table>
@@ -507,18 +507,19 @@
             <li><span class="idx">03</span><div><h3>The progression rule</h3><p>When to add weight, when to add reps, and how to write the next target before you leave.</p></div></li>
             <li><span class="idx">04</span><div><h3>Crunch weeks</h3><p>Short sessions, two Fallback workouts, and how to keep your place in the A/B/C rotation.</p></div></li>
             <li><span class="idx">05</span><div><h3>Debugging your training</h3><p>A symptom → fix table for missed sessions, stuck lifts and falling reps. Change one thing at a time.</p></div></li>
-            <li><span class="idx">+</span><div><h3>Your first 4 weeks, weekly review & training log</h3><p>A week-by-week start plan, a 5-minute review, and a printable log.</p></div></li>
+            <li><span class="idx">06</span><div><h3>Your first 4 weeks</h3><p>A week-by-week start plan and a 5-minute weekly review.</p></div></li>
+            <li><span class="idx">07</span><div><h3>Training log</h3><p>Printable log pages with every session already filled in. Just write the weight and reps.</p></div></li>
           </ol>
 
           <div class="sessions">
             <div class="session">
               <div class="session-head"><h3>Session A</h3><span>15 working sets</span></div>
               <ol>
-                <li><b>Leg press</b><span>3 × 8–12</span></li>
                 <li><b>Machine chest press</b><span>3 × 8–12</span></li>
-                <li><b>Pull-ups (assisted as needed)</b><span>3 × 6–10</span></li>
+                <li><b>Lat pulldown</b><span>3 × 8–12</span></li>
+                <li><b>Leg press</b><span>3 × 6–10</span></li>
                 <li><b>Seated or lying leg curl</b><span>2 × 10–15</span></li>
-                <li><b>Lateral raise</b><span>2 × 12–20</span></li>
+                <li><b>Lateral raise</b><span>2 × 10–15</span></li>
                 <li><b>Biceps curl</b><span>2 × 10–15</span></li>
               </ol>
             </div>
@@ -588,7 +589,7 @@
           </details>
           <details>
             <summary>What equipment do I need?</summary>
-            <p>A regular commercial gym: leg press, chest press, lat pulldown or pull-up station, cables, dumbbells and a barbell. If a machine is taken, there's a swap table with alternatives.</p>
+            <p>A regular commercial gym: leg press, chest press, lat pulldown, cables, dumbbells and a barbell. If a machine is taken, there's a swap table with alternatives.</p>
           </details>
           <details>
             <summary>Does it cover nutrition or cardio?</summary>
@@ -596,7 +597,7 @@
           </details>
           <details>
             <summary>What format is it, and how do I get it?</summary>
-            <p>It's a digital ebook sold through Payhip. After checkout you get a download link straight away. The training log is designed to be printed or copied into your notes app.</p>
+            <p>It's a 23-page PDF ebook sold through Payhip. After checkout you get a download link straight away. It reads well on a phone, tablet or laptop, and the training log pages are designed to be printed or copied into your notes app.</p>
           </details>
           <details>
             <summary>Will I get results in four weeks?</summary>
@@ -614,7 +615,7 @@
           <h2>Your health needs a system too.</h2>
           <p>Three workouts, one progression rule, and a plan for the weeks that don't go to plan. Book your first session tonight.</p>
           <a class="btn buy" href="#">Get The Developer Training System <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <p class="small">Digital ebook · Instant download via Payhip</p>
+          <p class="small">23-page PDF ebook · Instant download via Payhip</p>
         </div>
       </div>
     </section>
