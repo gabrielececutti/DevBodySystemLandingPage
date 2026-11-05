@@ -203,14 +203,25 @@
 
     /* About */
     .about { display: grid; grid-template-columns: 380px 1fr; gap: 56px; align-items: center; }
-    .portrait { margin: 0; }
-    .portrait-frame {
-      border-radius: var(--radius); overflow: hidden;
-      background: radial-gradient(90% 70% at 50% 35%, rgba(140, 82, 255, 0.30), transparent 70%), var(--surface);
-      border: 1px solid var(--line);
+    .portrait { margin: 0 0 56px; position: relative; }
+    .portrait-main {
+      display: block; width: 100%; height: auto;
+      border-radius: var(--radius); border: 1px solid var(--line);
     }
-    .portrait img { width: 100%; height: auto; display: block; }
-    .portrait figcaption { margin-top: 12px; font-size: 0.88rem; color: var(--faint); }
+    .portrait-inset {
+      position: absolute; right: -28px; bottom: -56px; width: 46%;
+      border-radius: 12px; overflow: hidden;
+      border: 3px solid var(--bg);
+      background: radial-gradient(90% 70% at 50% 35%, rgba(140, 82, 255, 0.35), transparent 70%), var(--surface);
+      box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.7);
+    }
+    .portrait-inset img { display: block; width: 100%; height: auto; }
+    .portrait figcaption {
+      position: absolute; left: 12px; bottom: 12px; max-width: 48%;
+      padding: 8px 12px; border-radius: 8px;
+      background: rgba(17, 17, 17, 0.82); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      font-size: 0.82rem; line-height: 1.4; color: var(--text);
+    }
     .about h2 { margin-bottom: 20px; }
     .about p { color: var(--muted); }
     .about p + p { margin-top: 16px; }
@@ -254,6 +265,7 @@
       .rules { grid-template-columns: repeat(2, 1fr); }
       .hero .wrap, .inside, .split, .about { grid-template-columns: 1fr; gap: 40px; }
       .about .portrait { max-width: 400px; }
+      .portrait-inset { right: -12px; }
     }
     @media (max-width: 720px) {
       body { font-size: 16px; }
@@ -374,11 +386,13 @@
     <section>
       <div class="wrap about">
         <figure class="portrait">
-          <div class="portrait-frame">
+          <img class="portrait-main" src="assets/gabriele-desk.webp" width="780" height="1040" loading="lazy"
+               alt="Gabriele, founder of DevBodySystem, coding at his desk with a laptop and a curved monitor">
+          <div class="portrait-inset">
             <img src="assets/gabriele-physique.webp" width="514" height="529" loading="lazy"
-                 alt="Gabriele, founder of DevBodySystem, showing his lean, muscular physique in a mirror selfie">
+                 alt="Gabriele's lean, muscular physique in a mirror selfie">
           </div>
-          <figcaption>Me, after 8+ years of training alongside a full-time desk job.</figcaption>
+          <figcaption>Full-time software engineer. 8+ years of training alongside the desk job.</figcaption>
         </figure>
         <div>
           <span class="eyebrow">Who wrote this</span>
